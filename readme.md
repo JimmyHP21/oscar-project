@@ -6,6 +6,8 @@
 
 - [x] Crud de Calçados
 - [x] Documentação via Swagger
+- [x] Front-end Angular
+- [x] Teste Unitarios
 
 ---
 
@@ -30,6 +32,7 @@
 - Liquibase
 - Swagger
 - QueryDSL
+- Junit
 
 ---
 
