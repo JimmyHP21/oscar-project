@@ -1,0 +1,75 @@
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource">
+    <!-- id  -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <p class="text-truncate">{{element.id}}</p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- size  -->
+    <ng-container matColumnDef="size">
+      <mat-header-cell *matHeaderCellDef>Tamanho</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <p class="text-truncate">{{element.size}}</p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- color  -->
+    <ng-container matColumnDef="color">
+      <mat-header-cell *matHeaderCellDef>Cor</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <p class="text-truncate">{{element.color}}</p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- brand  -->
+    <ng-container matColumnDef="brand">
+      <mat-header-cell *matHeaderCellDef>Marca</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <p class="text-truncate">{{element.brand}}</p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- price  -->
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef>Preço</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <p class="text-truncate">{{element.price}}</p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- quantity  -->
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef>Quantidade</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+          <p class="text-truncate">{{element.quantity}}</p>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef [ngClass]="'wd-6'"></mat-header-cell>
+        <mat-cell *matCellDef="let element" [ngClass]="'wd-6'">
+            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" (click)="$event.stopPropagation();">
+                <mat-icon class="secondary-text">more_vert</mat-icon>
+            </button>
+            <mat-menu #moreMenu="matMenu">
+                <button mat-menu-item aria-label="edit" (click)="editShoe(element)">
+                    <mat-icon>edit</mat-icon>
+                    <span>Editar</span>
+                </button>
+                <button mat-menu-item aria-label="remove" (click)="deleteShoe(element.id)">
+                    <mat-icon>delete</mat-icon>
+                    <span>Remove</span>
+                </button>
+            </mat-menu>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons> </mat-paginator>
+</div>

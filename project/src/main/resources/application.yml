@@ -1,0 +1,30 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database: h2
+    show-sql: false
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+    url: jdbc:h2:mem:projectOscar
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  jackson:
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: true
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: America/Sao_Paulo
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
+  output:
+    ansi:
+      enabled: ALWAYS
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+springdoc:
+  api-docs:
+    enabled: true

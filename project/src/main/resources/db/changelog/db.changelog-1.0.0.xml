@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- CREATE TABLE SHOE -->
+    <changeSet author="renan.peres" id="create-table-shoe">
+        <createTable tableName="SHOE">
+            <column autoIncrement="${autoIncrement}" name="ID" type="BIGINT">
+                <constraints nullable="false" 
+                             primaryKey="true" 
+                             primaryKeyName="PK_SHOE"/>
+            </column>
+            <column name="SIZE_SHOE" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CATEGORY_SHOE" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COLOR_SHOE" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRICE_SHOE" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="BRAND_SHOE" type="VARCHAR(80)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="QUANTITY_SHOE" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION_SHOE" type="VARCHAR(255)"/>
+            <column name="DATE_REGISTER" type="VARCHAR(50)"/>
+        </createTable>
+    </changeSet>
+
+
+    <!--Sequences-->
+    <changeSet author="renan.peres" id="create-sequence-1.0.0" dbms="${dbmsAutoIncrement}">
+        <createSequence sequenceName="SEQ_SHOE"/>
+    </changeSet>
+
+</databaseChangeLog>

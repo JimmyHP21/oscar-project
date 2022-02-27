@@ -1,0 +1,141 @@
+
+<div class="content">
+  <div class="div-search">
+    <form name="loginForm" [formGroup]="formShoe" (submit)="onSubmit()">
+      <mat-form-field class="wd-6" appearance="outline">
+        <mat-label>Tamanho</mat-label>
+        <input matInput formControlName="size" type="number" autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Categoria</mat-label>
+        <input matInput formControlName="category" autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Cor</mat-label>
+        <input matInput formControlName="color" autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Preço</mat-label>
+        <input matInput formControlName="price" type="number" autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Marca</mat-label>
+        <input matInput formControlName="bride" autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field class="wd-35" appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="description" autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Data Criação</mat-label>
+        <input matInput formControlName="dateRegister" [matDatepicker]="picker3" [value]="f.dateRegister.value">
+        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+
+
+      <button mat-raised-button color="accent" type="submit" class="submit-button" aria-label="Pesquisar">
+        Pesquisar
+        <mat-icon class="s-24 secondary-text">search</mat-icon>
+      </button>
+    </form>
+  </div>
+  <div *ngIf="pageType === 'list'; else newEdit" class="div-list">
+    <app-shoe-list *ngIf="!isLoading" [listReceiver]="shoeList" (shoeDelete)="deleteShoe($event)" (newEdit)="clickNewEdit($event)"></app-shoe-list>
+  </div>
+
+  <ng-template #newEdit>
+    <div class="new-edit">
+      <form name="productForm" [formGroup]="shoeConstructor" class="product w-100-p">
+        <div class="row-form">
+          <!-- ID -->
+          <ng-container *ngIf="pageType === 'edit'">
+            <mat-form-field appearance="outline" floatLabel="always" [ngClass]="'wd-6'" style="padding-right: 10px">
+              <mat-label>ID</mat-label>
+              <input matInput placeholder="ID" disabled name="Id" formControlName="id">
+            </mat-form-field>
+          </ng-container>
+
+          <mat-form-field appearance="outline" floatLabel="always" style="padding-right: 10px">
+            <mat-label>Marca</mat-label>
+            <input matInput placeholder="Nome da Marca" name="marca" formControlName="brand" autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Categoria</mat-label>
+            <input matInput placeholder="Categoria" name="categoria" formControlName="category" autocomplete="off">
+          </mat-form-field>
+        </div>
+        <div class="row-form">
+          <mat-form-field appearance="outline" floatLabel="always" style="padding-right: 10px">
+            <mat-label>Cor</mat-label>
+            <input matInput placeholder="Cor" name="cor" formControlName="color" autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" [ngClass]="'wd-6'" floatLabel="always" style="padding-right: 10px">
+            <mat-label>Quantidade</mat-label>
+            <input matInput placeholder="Quantidade" name="quantidade" formControlName="quantity" type="number" autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" [ngClass]="'wd-6'" floatLabel="always"  style="padding-right: 10px">
+            <mat-label>Tamanho</mat-label>
+            <input matInput placeholder="Tamanho" name="tamanho" formControlName="size" type="number" autocomplete="off">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" [ngClass]="'wd-6'" floatLabel="always">
+            <mat-label>Preço</mat-label>
+            <input matInput placeholder="Preço" name="preco" formControlName="price" type="number" autocomplete="off">
+          </mat-form-field>
+        </div>
+
+        <div class="row-form" *ngIf="pageType === 'edit'">
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Data Registro</mat-label>
+            <input matInput placeholder="Data do registro" name="registro" formControlName="dateRegister" autocomplete="off">
+          </mat-form-field>
+        </div>
+
+        <div class="row-form-full">
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Descrição</mat-label>
+            <input matInput placeholder="Descrição" name="descricao" formControlName="description" autocomplete="off">
+          </mat-form-field>
+        </div>
+
+      </form>
+
+      <div class="div-button">
+        <button mat-raised-button class="confirm" *ngIf="pageType == 'edit'" (click)="saveShoe()">
+          <span>Salvar</span>
+        </button>
+
+        <button mat-raised-button class="confirm" [disabled]="shoeConstructor.invalid" *ngIf="pageType === 'new'" (click)="addShoe()">
+          <span>Cadastrar</span>
+        </button>
+
+        <button mat-raised-button class="cancel" (click)="cancelar()">
+          <span>Cancelar</span>
+              </button>
+      </div>
+
+
+    </div>
+  </ng-template>
+
+  <div class="button-new" (click)="clickNewEdit(null)" >
+    +
+  </div>
+</div>
+
+
+
+
+
+
+

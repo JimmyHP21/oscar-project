@@ -1,0 +1,60 @@
+@import '~@angular/material/theming';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@include mat-core();
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  font-family: 'Roboto';
+  font-weight: 400;
+
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    padding: 1rem 0;
+  }
+
+  div {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    padding: 0 .5rem
+  }
+
+  .pt-24 {
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .confirm {
+      background-color: #0b740bd0;
+      color: #fff;
+      font-weight: 500;
+      margin-left: 1rem;
+    }
+
+    .cancel {
+      background-color: #d506069f;
+      color: #fff;
+    }
+
+    button {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      padding: .7rem;
+      border: none;
+      border-radius: .7rem;
+      box-shadow: none;
+    }
+
+    .button {
+      transition-duration: 0.4s;
+    }
+
+    .confirm:hover {
+      background-color: #4CAF50;
+    }
+  }
+}
